@@ -7,4 +7,3 @@ from selenium.webdriver.support import expected_conditions as EC
 navegador = webdriver.Chrome()
 navegador.get('https://www.youtube.com/')
 navegador.maximize_window()
-espera = WebDriverWait(navegador, 20)
