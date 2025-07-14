@@ -35,6 +35,7 @@ def preencher_form(navegador):
      genero = espera.until(EC.presence_of_all_elements_located((By.CLASS_NAME, 'custom-control')))
      numero = espera.until(EC.presence_of_element_located((By.ID, 'userNumber')))
      calendario = espera.until(EC.presence_of_element_located((By.ID, 'dateOfBirthInput')))
+     hobbies = espera.until(EC.presence_of_element_located((By.CLASS_NAME, 'custom-control-label')))
 
      navegador.execute_script("window.scrollTo(0, 0);")
      time.sleep(0.5)
@@ -64,7 +65,13 @@ def preencher_form(navegador):
      assunto_container.click()
      input_assunto.send_keys('ASSUNTO TESTE')
 
-
+     navegador.execute_script("arguments[0].scrollIntoView({behavior: 'instant', block: 'center'});", hobbies)
+     time.sleep(0.5)
+     for opcao in hobbies:
+          if 'Sports' in opcao.text:
+               opcao.click()
+               break
+     
 
 preencher_form(navegador)
 
