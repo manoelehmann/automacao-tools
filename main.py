@@ -36,7 +36,7 @@ def preencher_form(navegador):
      numero = espera.until(EC.presence_of_element_located((By.ID, 'userNumber')))
      calendario = espera.until(EC.presence_of_element_located((By.ID, 'dateOfBirthInput')))
      hobbies = espera.until(EC.presence_of_all_elements_located((By.CLASS_NAME, 'custom-control')))
-     picture = espera.until(EC.presence_of_element_located((By.ID, 'uploadPicture')))
+     
      submit = espera.until(EC.presence_of_element_located((By.ID, 'submit')))
 
      nome.send_keys('Manoel')
@@ -71,6 +71,9 @@ def preencher_form(navegador):
           if 'Sports' in opcao.text:
                opcao.click()
                break
+     picture = espera.until(EC.presence_of_element_located((By.ID, 'uploadPicture')))
+     picture.send_keys(r"C:\Users\manoel.rodrigues\Pictures\Screenshots\Captura de tela 2025-07-15 142954.png")
+
         
      
 
