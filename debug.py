@@ -35,23 +35,24 @@ def preencher_form(navegador):
      genero = espera.until(EC.presence_of_all_elements_located((By.CLASS_NAME, 'custom-control')))
      numero = espera.until(EC.presence_of_element_located((By.ID, 'userNumber')))
      calendario = espera.until(EC.presence_of_element_located((By.ID, 'dateOfBirthInput')))
-     hobbies = espera.until(EC.presence_of_element_located((By.CLASS_NAME, 'custom-control-label')))
-
-     navegador.execute_script("window.scrollTo(0, 0);")
-     time.sleep(0.5)
-
-     # Tenta scroll até o elemento
-     navegador.execute_script("arguments[0].scrollIntoView({behavior: 'instant', block: 'center'});", calendario)
-     time.sleep(0.5)
+     hobbies = espera.until(EC.presence_of_all_elements_located((By.CLASS_NAME, 'custom-control')))
+     picture = espera.until(EC.presence_of_element_located((By.ID, 'uploadPicture')))
+     submit = espera.until(EC.presence_of_element_located((By.ID, 'submit')))
 
      nome.send_keys('Manoel')
      sobrenome.send_keys('Neto')
      email.send_keys('manoel@gmail.com')
+
+     time.sleep(0.5)
+     navegador.execute_script("arguments[0].scrollIntoView({block: 'center'});", submit)
      for opcao in genero:
           if 'Male' in opcao.text:
                opcao.click()
                break
+          
      numero.send_keys('9999999999')
+
+   
 
      calendario.click()
      seletor_ano = espera.until(EC.element_to_be_clickable((By.CLASS_NAME, 'react-datepicker__year-select')))
@@ -63,14 +64,14 @@ def preencher_form(navegador):
      assunto_container = espera.until(EC.presence_of_element_located((By.ID, 'subjectsContainer')))
      input_assunto = assunto_container.find_element(By.CSS_SELECTOR, 'input')
      assunto_container.click()
-     input_assunto.send_keys('ASSUNTO TESTE')
+     input_assunto.send_keys('Maths')
+     input_assunto.send_keys(Keys.ENTER)
 
-     navegador.execute_script("arguments[0].scrollIntoView({behavior: 'instant', block: 'center'});", hobbies)
-     time.sleep(0.5)
      for opcao in hobbies:
           if 'Sports' in opcao.text:
                opcao.click()
                break
+        
      
 
 preencher_form(navegador)
