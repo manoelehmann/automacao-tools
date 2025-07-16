@@ -36,7 +36,7 @@ def preencher_form(navegador):
      numero = espera.until(EC.presence_of_element_located((By.ID, 'userNumber')))
      calendario = espera.until(EC.presence_of_element_located((By.ID, 'dateOfBirthInput')))
      hobbies = espera.until(EC.presence_of_all_elements_located((By.CLASS_NAME, 'custom-control')))
-     
+     endereco = espera.until(EC.presence_of_element_located((By.ID, 'currentAddress')))
      submit = espera.until(EC.presence_of_element_located((By.ID, 'submit')))
 
      nome.send_keys('Manoel')
@@ -74,7 +74,26 @@ def preencher_form(navegador):
      picture = espera.until(EC.presence_of_element_located((By.ID, 'uploadPicture')))
      picture.send_keys(r"C:\Users\manoel.rodrigues\Pictures\Screenshots\Captura de tela 2025-07-15 142954.png")
 
-        
+     endereco.send_keys('TESTE TESTETESTE TESTETESTE TESTETESTE TESTETESTE TESTETESTE TESTETESTE TESTETESTE TESTETESTE TESTE')
+
+     estado = espera.until(EC.element_to_be_clickable((By.ID, "state")))
+     navegador.execute_script("arguments[0].click();", estado)
+
+     estado_input = espera.until(EC.presence_of_element_located((By.CSS_SELECTOR, "#state input")))
+     estado_input.send_keys("Haryana")
+     estado_input.send_keys(Keys.ENTER)
+
+     cidade = espera.until(EC.element_to_be_clickable((By.ID, 'city')))
+     navegador.execute_script("arguments[0].click();", cidade)
+
+     cidade_input = espera.until(EC.presence_of_element_located((By.CSS_SELECTOR, "#city input")))
+     cidade_input.send_keys("Panipat")
+     cidade_input.send_keys(Keys.ENTER)
+
+     submit.click()
+
+
+
      
 
 preencher_form(navegador)
