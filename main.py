@@ -12,6 +12,9 @@ navegador.get('https://demoqa.com/')
 navegador.maximize_window()
 espera = WebDriverWait(navegador, 20)
 
+def abrir_site(navegador):
+     navegador.get('https://demoqa.com/')
+
 
                                          # BLOCO PRINCIPAL
 
@@ -111,6 +114,36 @@ def preencher_form(navegador):
      submit.click()
 
 preencher_form(navegador)
+
+abrir_site(navegador)
+
+def elementos(navegador):
+     
+    clicar_elementos = espera.until(EC.presence_of_all_elements_located((By.CLASS_NAME, 'card.mt-4')))
+    for opcao in clicar_elementos:
+        if 'Elements' in opcao.text:
+            opcao.click()
+            break
+        
+elementos(navegador)
+
+web_tabela = espera.until(EC.presence_of_element_located((By.ID, 'item-3')))
+web_tabela.click()
+
+def tabela(navegador):
+
+     add = espera.until(EC.presence_of_element_located((By.ID, 'addNewRecordButton')))
+     add.click()
+
+     
+
+
+
+
+
+
+
+tabela(navegador)
 
 
 
