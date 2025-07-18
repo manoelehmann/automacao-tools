@@ -135,8 +135,53 @@ def tabela(navegador):
      add = espera.until(EC.presence_of_element_located((By.ID, 'addNewRecordButton')))
      add.click()
 
-     
+     nome = espera.until(EC.presence_of_element_located((By.ID, 'firstName')))
+     sobrenome = espera.until(EC.presence_of_element_located((By.ID, 'lastName')))
+     email = espera.until(EC.presence_of_element_located((By.ID, 'userEmail')))
+     idade = espera.until(EC.presence_of_element_located((By.ID, 'age')))
+     salario = espera.until(EC.presence_of_element_located((By.ID, 'salary')))
+     departamento = espera.until(EC.presence_of_element_located((By.ID, 'department')))
+     submit_add = espera.until(EC.presence_of_element_located((By.ID, 'submit')))
 
+     nome.send_keys('Manoel')
+     sobrenome.send_keys('Neto')
+     email.send_keys('manoel@gmail.com')
+     idade.send_keys('20')
+     salario.send_keys('10000')
+     departamento.send_keys('Automation')
+     submit_add.click()
+
+     add = espera.until(EC.presence_of_element_located((By.ID, 'addNewRecordButton')))
+     add.click()
+
+     nome = espera.until(EC.presence_of_element_located((By.ID, 'firstName')))
+     sobrenome = espera.until(EC.presence_of_element_located((By.ID, 'lastName')))
+     email = espera.until(EC.presence_of_element_located((By.ID, 'userEmail')))
+     idade = espera.until(EC.presence_of_element_located((By.ID, 'age')))
+     salario = espera.until(EC.presence_of_element_located((By.ID, 'salary')))
+     departamento = espera.until(EC.presence_of_element_located((By.ID, 'department')))
+     submit_add = espera.until(EC.presence_of_element_located((By.ID, 'submit')))
+
+     nome.send_keys('Andressa')
+     sobrenome.send_keys('Calaça')
+     email.send_keys('andressa@gmail.com')
+     idade.send_keys('20')
+     salario.send_keys('2000')
+     departamento.send_keys('RH')
+     submit_add.click()
+
+     scroll = espera.until(EC.presence_of_element_located((By.ID, 'item-8')))
+     time.sleep(0.5)
+     navegador.execute_script("arguments[0].scrollIntoView({block: 'center'});", scroll )
+
+
+     edit = espera.until(EC.presence_of_element_located((By.ID, 'edit-record-4')))
+     edit.click()
+     salario = espera.until(EC.presence_of_element_located((By.ID, 'salary')))
+     salario.clear()
+     salario.send_keys('20000')
+     submit_add = espera.until(EC.presence_of_element_located((By.ID, 'submit')))
+     submit_add.click()
 
 
 
